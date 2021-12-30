@@ -1,12 +1,13 @@
 const { assert } = require("chai");
 
-describe("Game1", function() {
-  it("should be a winner", async function() {
+describe("Game1", function () {
+  it("should be a winner", async function () {
     const Game = await ethers.getContractFactory("Game1");
     const game = await Game.deploy();
     await game.deployed();
 
     // you must call unlock before you can win
+    await game.unlock();
 
     await game.win();
 
